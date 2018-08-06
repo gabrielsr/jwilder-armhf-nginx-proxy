@@ -1,5 +1,5 @@
-FROM nginx:1.13
-LABEL maintainer="Jason Wilder mail@jasonwilder.com"
+FROM arm32v7/nginx
+LABEL maintainer="Gabriel Rodrigues<gabrielsr@gmail.com>"
 
 # Install wget and install/updates certificates
 RUN apt-get update \
@@ -20,9 +20,9 @@ RUN chmod u+x /usr/local/bin/forego
 
 ENV DOCKER_GEN_VERSION 0.7.4
 
-RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VERSION/docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz \
- && tar -C /usr/local/bin -xvzf docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz \
- && rm /docker-gen-linux-amd64-$DOCKER_GEN_VERSION.tar.gz
+RUN wget https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VERSION/docker-gen-linux-armhf-$DOCKER_GEN_VERSION.tar.gz \
+ && tar -C /usr/local/bin -xvzf docker-gen-linux-armhf-$DOCKER_GEN_VERSION.tar.gz \
+ && rm /docker-gen-linux-armhf-$DOCKER_GEN_VERSION.tar.gz
 
 COPY network_internal.conf /etc/nginx/
 
